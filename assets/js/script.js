@@ -95,7 +95,7 @@ var createTaskActions = function(taskId) {
     
     return actionContainerEl;
 };
-formEl.addEventListener("submit", taskFormHandler);
+
 
 var taskButtonHandler = function(event) {
     // get target element from event
@@ -197,9 +197,6 @@ var taskStatusChangeHandler = function(event) {
     saveTasks();
 };
 
-pageContentEl.addEventListener("click", taskButtonHandler);
-pageContentEl.addEventListener("change", taskStatusChangeHandler);
-
 var saveTasks = function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -218,3 +215,9 @@ var loadTasks = function() {
         createTaskEl(savedTasks[i]);
     }
 }
+
+formEl.addEventListener("submit", taskFormHandler);
+pageContentEl.addEventListener("click", taskButtonHandler);
+pageContentEl.addEventListener("change", taskStatusChangeHandler);
+
+loadTasks();
